@@ -6,3 +6,12 @@ C:\Users\k_vol\Desktop\OOD2\OOD2\bin\Debug\OOD2.exe
 C:\Users\k_vol\Desktop\OOD2\OOD2\bin\Debug\OOD2.pdb
 C:\Users\k_vol\Desktop\OOD2\OOD2\obj\Debug\OOD2.exe
 C:\Users\k_vol\Desktop\OOD2\OOD2\obj\Debug\OOD2.pdb
+\\psf\Home\OOD2\OOD2\bin\Debug\OOD2.exe.config
+\\psf\Home\OOD2\OOD2\obj\Debug\OOD2.csprojResolveAssemblyReference.cache
+\\psf\Home\OOD2\OOD2\obj\Debug\OOD2.Form1.resources
+\\psf\Home\OOD2\OOD2\obj\Debug\OOD2.csproj.GenerateResource.Cache
+\\psf\Home\OOD2\OOD2\bin\Debug\OOD2.exe
+\\psf\Home\OOD2\OOD2\bin\Debug\OOD2.pdb
+\\psf\Home\OOD2\OOD2\obj\Debug\OOD2.Properties.Resources.resources
+\\psf\Home\OOD2\OOD2\obj\Debug\OOD2.exe
+\\psf\Home\OOD2\OOD2\obj\Debug\OOD2.pdb
