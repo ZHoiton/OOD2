@@ -22,3 +22,12 @@ D:\GitRepos\OOD2\OOD2_project\bin\Debug\OOD2_project.pdb
 D:\GitRepos\OOD2\Na Marto\OOD2_project\bin\Debug\OOD2_project.exe.config
 D:\GitRepos\OOD2\Na Marto\OOD2_project\obj\Debug\OOD2_project.exe
 D:\GitRepos\OOD2\Na Marto\OOD2_project\obj\Debug\OOD2_project.pdb
+D:\GitRepos\OOD2\Marto\OOD2_project\bin\Debug\OOD2_project.exe.config
+D:\GitRepos\OOD2\Marto\OOD2_project\obj\Debug\OOD2_project.exe
+D:\GitRepos\OOD2\Marto\OOD2_project\obj\Debug\OOD2_project.pdb
+D:\GitRepos\OOD2\Marto\OOD2_project\bin\Debug\OOD2_project.exe
+D:\GitRepos\OOD2\Marto\OOD2_project\bin\Debug\OOD2_project.pdb
+D:\GitRepos\OOD2\Marto\OOD2_project\obj\Debug\OOD2_project.csprojResolveAssemblyReference.cache
+D:\GitRepos\OOD2\Marto\OOD2_project\obj\Debug\OOD2_project.Form1.resources
+D:\GitRepos\OOD2\Marto\OOD2_project\obj\Debug\OOD2_project.Properties.Resources.resources
+D:\GitRepos\OOD2\Marto\OOD2_project\obj\Debug\OOD2_project.csproj.GenerateResource.Cache

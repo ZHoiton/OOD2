@@ -104,7 +104,7 @@ namespace OOD2_project
             if (!hasLowIn)
             {
                 lowInput = l;
-                lowInValue = l.value;
+                lowInValue = l.getValue();
                 CalculateValue();
                 hasLowIn = true;
             }
@@ -121,7 +121,7 @@ namespace OOD2_project
             if (!hasUpperIn)
             {
                 upInput = l;
-                upperInValue = l.value;
+                upperInValue = l.getValue();
                 CalculateValue();
                 hasUpperIn = true;
             }

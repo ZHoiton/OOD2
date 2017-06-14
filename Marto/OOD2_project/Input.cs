@@ -11,16 +11,16 @@ namespace OOD2_project
     [Serializable]
     public class Input : Component
     {
-        private int currentvalue;
+        private int currentValue;
         private Link output;
         Rectangle rect;
         public bool isUsed { get; set; }
 
-        public Input(Image image, int size, Point coordinates, int CurrentValue)
+        public Input(Image image, int size, Point coordinates, int value)
             : base(image, size, coordinates)
         {
             //rect = new Rectangle(point.X - 1, point.Y - 1, base.size, base.size);
-            currentvalue = CurrentValue;
+            this.currentValue = value;
             isUsed = false;
         }
 
@@ -49,7 +49,7 @@ namespace OOD2_project
 
         public int getValue()
         {
-            return currentvalue;
+            return currentValue;
         }
 
         public override Point getPosition()
@@ -62,7 +62,7 @@ namespace OOD2_project
             if (!isUsed)
             {
                 output = link;
-                link.value = currentvalue;
+                link.setValue(currentValue);
                 isUsed = true;
             }
             else

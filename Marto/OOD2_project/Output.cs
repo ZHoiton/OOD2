@@ -13,13 +13,12 @@ namespace OOD2_project
     {
         public Link input;
         private bool isEmpty;
-        private int inValue;
+        private int inValue = new int();
         Rectangle rect;
 
         public Output(Image image, int size, Point coordinates) 
             : base(image, size, coordinates) 
         {
-            inValue = 0;
             isEmpty = true;
         }
 
@@ -69,6 +68,14 @@ namespace OOD2_project
             {
                 link = null;
                 MessageBox.Show("You cannot have more than one input for this component!");
+            }
+        }
+
+        public override void CalculateValue()
+        {
+            if (!isEmpty)
+            {
+                this.inValue = input.getValue();
             }
         }
 

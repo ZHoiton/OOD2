@@ -102,7 +102,7 @@ namespace OOD2_project
             if (!hasIn)
             {
                 Input = l;
-                InValue = l.value;
+                InValue = l.getValue();
                 CalculateValue();
                 hasIn = true;
             }
