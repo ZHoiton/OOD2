@@ -668,36 +668,6 @@ namespace OOD2_project
 
         }
 
-        /// <summary>
-        /// SaveAs method to save the whole network
-        /// </summary>
-        /// <param name="network"></param>
-        public bool SaveAs(Project network)
-        {
-            SaveFileDialog dialog = new SaveFileDialog();
-
-            dialog.FileName = "Simulation1";
-            dialog.Filter = "SimulatorExtension files (*.simex)|*.simex";
-            dialog.FilterIndex = 1;
-            dialog.RestoreDirectory = true;
-
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                FileStream fs = null;
-                BinaryFormatter bf = null;
-
-                fs = new FileStream(dialog.FileName, FileMode.Create, FileAccess.Write);
-                bf = new BinaryFormatter();
-                this.savedFile = dialog.FileName;
-                bf.Serialize(fs, network);
-                fs.Close();
-                return true;
-
-            }
-            return false;
-
-        }
-
 
 
 

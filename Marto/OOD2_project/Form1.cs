@@ -548,17 +548,20 @@ namespace OOD2_project
                 DialogResult dialogResult = MessageBox.Show("Would you like to save your current work?", "Save file ?", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    this.project.SaveAs(this.project);
+                    SaveLoadManager.SaveAs(this.project);
+                    this.project.listComponents.Clear();
+                    this.project.listLinks.Clear();
+                    this.isSelected = false;
+                    //label10.Visible = false;
+                    this.workPanel.Invalidate();
+                }
+                else
+                {
                     this.project.listComponents.Clear();
                     this.project.listLinks.Clear();
                     this.isSelected = false;
                     this.workPanel.Invalidate();
                 }
-                else
-                    this.project.listComponents.Clear();
-                this.project.listLinks.Clear();
-                this.isSelected = false;
-                this.workPanel.Invalidate();
 
             }
             else
@@ -607,19 +610,22 @@ namespace OOD2_project
                 DialogResult dialogResult = MessageBox.Show("Would you like to save your current work?", "Save file ?", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    this.project.SaveAs(this.project);
-                    this.OpenFile();
+                    SaveLoadManager.SaveAs(this.project);
+                    SaveLoadManager.OpenFile(ref this.project);
+                    label10.Visible = false;
                     isSelected = true;
                     workPanel.Invalidate();
                 }
                 else
-                    this.OpenFile();
+                    SaveLoadManager.OpenFile(ref this.project);
+                label10.Visible = false;
                     this.isSelected = true;
                 workPanel.Invalidate();
             }
             else
             {
-                this.OpenFile();
+                SaveLoadManager.OpenFile(ref this.project);
+                label10.Visible = false;
                 this.isSelected = true;
                 workPanel.Invalidate();
             }
@@ -629,7 +635,7 @@ namespace OOD2_project
 
         private void saveAsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            this.project.SaveAs(this.project);
+            SaveLoadManager.SaveAs(this.project);
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -639,7 +645,7 @@ namespace OOD2_project
                 DialogResult dialogResult = MessageBox.Show("Would you like to save your current work?", "Save file ?", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    this.project.SaveAs(this.project);
+                    SaveLoadManager.SaveAs(this.project);
                     this.Close();
                 }
                 else
@@ -653,7 +659,7 @@ namespace OOD2_project
 
          private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.project.SaveAs(this.project);
+            SaveLoadManager.SaveAs(this.project);
 
         }
         
