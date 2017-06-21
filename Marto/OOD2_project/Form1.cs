@@ -24,7 +24,7 @@ namespace OOD2_project
         private Point point;
         private Component startComponent;
         private Component endComponent;
-        private int InputToBeRemovedValue= 2;
+        private int InputToBeRemovedValue = 2;
         Graphics gr;
         Link linkref;
         List<Link> listOfLinks;
@@ -39,12 +39,12 @@ namespace OOD2_project
             pointsList = new List<Point>();
             listOfLinks = new List<Link>();
             this.project = new Project(workPanel.Height, workPanel.Width);
-            
+
         }
 
         private void workPanel_MouseDown(object sender, MouseEventArgs e)
         {
-          
+
         }
 
         //Drawing the component on the workPanel..
@@ -133,7 +133,7 @@ namespace OOD2_project
                         }
                     }
                 }
-                catch(Exception exeption)
+                catch (Exception exeption)
                 {
                     Console.WriteLine(exeption.Message);
                 }
@@ -141,9 +141,9 @@ namespace OOD2_project
             }
             if (linkActivate && endComponent != null)
             {
-                if(linkref != null)
+                if (linkref != null)
                     linkref.DrawLink(gr);
-              
+
                 pointsList = new List<Point>();
                 startComponent = null;
                 endComponent = null;
@@ -223,7 +223,7 @@ namespace OOD2_project
             pbLink.BorderStyle = BorderStyle.None;
         }
 
-         
+
 
         private void pbAnd_MouseDown(object sender, MouseEventArgs e)
         {
@@ -242,7 +242,7 @@ namespace OOD2_project
 
         private void pbXOR_MouseDown(object sender, MouseEventArgs e)
         {
-             Cursor.Current = Cursors.Cross;
+            Cursor.Current = Cursors.Cross;
             pbXor.BorderStyle = BorderStyle.FixedSingle;
             selectedImage = pbXor.Image;
             selectedComponent = "XOR";
@@ -292,7 +292,7 @@ namespace OOD2_project
             pbNot.BorderStyle = BorderStyle.None;
             pbInput0.BorderStyle = BorderStyle.None;
         }
-        
+
 
         private void workPanel_DragEnter(object sender, DragEventArgs e)
         {
@@ -337,7 +337,7 @@ namespace OOD2_project
             point = new Point(e.X, e.Y);
         }
 
-       
+
         private void pbAnd_MouseUp(object sender, MouseEventArgs e)
         {
             selectedImage = null;
@@ -345,7 +345,7 @@ namespace OOD2_project
             point = new Point(e.X, e.Y);
         }
 
-       
+
         private void pbOutput_MouseUp(object sender, MouseEventArgs e)
         {
             selectedImage = null;
@@ -354,10 +354,10 @@ namespace OOD2_project
         }
         private void pbSink_MouseUp(object sender, MouseEventArgs e)
         {
-           
+
         }
 
-        
+
         private void pbXOR_MouseUp(object sender, MouseEventArgs e)
         {
             selectedImage = null;
@@ -366,7 +366,7 @@ namespace OOD2_project
         }
 
 
-       
+
         private void pbNOT_MouseUp(object sender, MouseEventArgs e)
         {
             selectedImage = null;
@@ -377,10 +377,10 @@ namespace OOD2_project
 
         private void pbLink_MouseUp(object sender, MouseEventArgs e)
         {
-         selectedImage = null;
-         pbLink.BorderStyle = BorderStyle.None;
+            selectedImage = null;
+            pbLink.BorderStyle = BorderStyle.None;
         }
-         
+
         //Checks where the user click..
         private void workPanel_MouseClick(object sender, MouseEventArgs e)
         {
@@ -393,7 +393,7 @@ namespace OOD2_project
                 {
                     this.addConnectionPoints(p);
                 }
-               
+
             }
             if (e.Button == MouseButtons.Right)
             {
@@ -419,20 +419,20 @@ namespace OOD2_project
                     {
                         menuItems = new MenuItem[3];
                     }
-                        
-                        menuItems[0] = new MenuItem("Remove Links");
-                        menuItems[1] = new MenuItem("Remove Component");
-                        menuItems[2] = new MenuItem("Clear Settings");
 
-                        ContextMenu buttonMenu = new ContextMenu(menuItems);
-                        buttonMenu.Show(workPanel, new System.Drawing.Point(p.X, p.Y));
-                        menuItems[0].Click += new EventHandler((obj, evargs) => menuItem_click(obj, evargs, p, menuItems));
-                        menuItems[1].Click += new EventHandler((obj, evargs) => menuItem_click(obj, evargs, p, menuItems));
-                        menuItems[2].Click += new EventHandler((obj, evargs) => menuItem_click(obj, evargs, p, menuItems));
+                    menuItems[0] = new MenuItem("Remove Links");
+                    menuItems[1] = new MenuItem("Remove Component");
+                    menuItems[2] = new MenuItem("Clear Settings");
 
-                  }
+                    ContextMenu buttonMenu = new ContextMenu(menuItems);
+                    buttonMenu.Show(workPanel, new System.Drawing.Point(p.X, p.Y));
+                    menuItems[0].Click += new EventHandler((obj, evargs) => menuItem_click(obj, evargs, p, menuItems));
+                    menuItems[1].Click += new EventHandler((obj, evargs) => menuItem_click(obj, evargs, p, menuItems));
+                    menuItems[2].Click += new EventHandler((obj, evargs) => menuItem_click(obj, evargs, p, menuItems));
+
+                }
             }
-          
+
         }
 
         public void menuItem_click(object sender, EventArgs e, Point point, MenuItem[] menuItems)
@@ -440,19 +440,19 @@ namespace OOD2_project
             //MenuItem Delete Link from the list with links
             if (sender == menuItems[0])
             {
-                this.project.RemoveLink( this.project.getComponent(point));
+                this.project.RemoveLink(this.project.getComponent(point));
                 this.project.ClearSettings(this.project.getComponent(point));
             }
             //MenuItem Delete Component form the list with components
             else if (sender == menuItems[1])
             {
                 this.project.RemoveLink(this.project.getComponent(point));
-                this.project.RemoveComponent(this.project.getComponent(point));                
+                this.project.RemoveComponent(this.project.getComponent(point));
             }
             //clears settings for the selected item so it can be reused
             else if (sender == menuItems[2])
             {
-                 this.project.ClearSettings(this.project.getComponent(point));
+                this.project.ClearSettings(this.project.getComponent(point));
             }
             else
             {
@@ -470,9 +470,9 @@ namespace OOD2_project
                     this.project.listComponents.Add(new Input(pbInput1.Image,
                                         (this.workPanel.Width - (this.workPanel.Width - pbInput0.Image.Width + 80)), pointt, 1));
                 }
-               
+
             }
-           // workPanel.Refresh();
+            // workPanel.Refresh();
             workPanel.Invalidate();
         }
 
@@ -498,15 +498,15 @@ namespace OOD2_project
                 else if (endComponent == null)
                 {
                     endComponent = this.project.getComponent(p);
-                    
-                        pointsList.Add(p);
-                        points = pointsList.ToArray();
-                        Link link = new Link(startComponent, endComponent, points);
-                        linkref = link;
-                        listOfLinks.Add(link);
-                        //adjSpliter.setInput(con,Convert.ToInt32(con.setFlow()));
-                        this.project.AddLink(ref link);
-                        this.workPanel.Invalidate();
+
+                    pointsList.Add(p);
+                    points = pointsList.ToArray();
+                    Link link = new Link(startComponent, endComponent, points);
+                    linkref = link;
+                    listOfLinks.Add(link);
+                    //adjSpliter.setInput(con,Convert.ToInt32(con.setFlow()));
+                    this.project.AddLink(ref link);
+                    this.workPanel.Invalidate();
                 }
 
             }
@@ -527,10 +527,10 @@ namespace OOD2_project
         //    btSet.Visible = false;
         //     adjSpliter.setPercentage(Convert.ToDouble(numericUpDown1.Value));
         //     workPanel.Enabled = true;
-             
+
         //}
 
-         private void pbLink_MouseClick(object sender, MouseEventArgs e)
+        private void pbLink_MouseClick(object sender, MouseEventArgs e)
         {
             linkActivate = true;
 
@@ -540,9 +540,9 @@ namespace OOD2_project
         {
             linkActivate = true;
         }
-         
-        
-      
+
+
+
 
         private void newToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
@@ -622,7 +622,7 @@ namespace OOD2_project
                 else
                     SaveLoadManager.OpenFile(ref this.project);
                 label10.Visible = false;
-                    this.isSelected = true;
+                this.isSelected = true;
                 workPanel.Invalidate();
             }
             else
@@ -632,7 +632,7 @@ namespace OOD2_project
                 this.isSelected = true;
                 workPanel.Invalidate();
             }
-           // workPanel.Invalidate();
+            // workPanel.Invalidate();
 
         }
 
@@ -660,17 +660,17 @@ namespace OOD2_project
             }
         }
 
-         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveLoadManager.SaveAs(this.project);
 
         }
-        
-        
+
+
         private void button1_Click(object sender, EventArgs e)
         {
-           
-            
+
+
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -678,10 +678,10 @@ namespace OOD2_project
 
         }
 
-       
 
-       
-        }
+
+
+    }
 
 }
 

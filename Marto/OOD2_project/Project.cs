@@ -20,7 +20,7 @@ namespace OOD2_project
         public int panelHeight;
         public List<Component> listComponents;
         public List<Link> listLinks;
-         public Component component;
+        public Component component;
         public Link link;
 
         public Project(int height, int width)
@@ -123,7 +123,7 @@ namespace OOD2_project
                         {
                             listComponents[i] = input;
                             link.startComponent = input;
-                         }
+                        }
                         break;
                     }
                 }
@@ -141,7 +141,7 @@ namespace OOD2_project
                         {
                             listComponents[i] = or;
                             link.startComponent = or;
-                         }
+                        }
                         break;
                     }
                 }
@@ -150,7 +150,7 @@ namespace OOD2_project
             else if (link.startComponent is XOR)
             {
 
-            for (int i = 0; i < listComponents.Count; i++)
+                for (int i = 0; i < listComponents.Count; i++)
                 {
                     if (listComponents.ElementAt(i) == link.startComponent)
                     {
@@ -358,8 +358,8 @@ namespace OOD2_project
                             NOT not = listComponents.ElementAt(i) as NOT;
                             not.CalculateValue();
                             Rectangle r1 = new Rectangle(link.curvePoints[link.curvePoints.Count() - 1], new Size(2, 2));
-                             
-                           if (r1.IntersectsWith(not.inLeft))
+
+                            if (r1.IntersectsWith(not.inLeft))
                             {
                                 not.setUpInput(ref link);
                                 if (link != null)
@@ -449,7 +449,6 @@ namespace OOD2_project
             }
         }
 
-
         /// <summary>
         /// Remove component from the components list
         /// </summary>
@@ -458,9 +457,9 @@ namespace OOD2_project
         {
             List<Link> toRemove = new List<Link>();
             Component losesInput = null;
-            foreach(Link checkIfOutput in toRemove)
+            foreach (Link checkIfOutput in toRemove)
             {
-                if(checkIfOutput.startComponent == comp)
+                if (checkIfOutput.startComponent == comp)
                 {
                     losesInput = checkIfOutput.endComponent;
                 }
@@ -510,7 +509,7 @@ namespace OOD2_project
                         counter++;
                     }
                     toRemove.Add(x);
-                   
+
 
                 }
                 if (x.endComponent == comp)
@@ -554,11 +553,11 @@ namespace OOD2_project
                         }
                     }
                     toRemove.Add(x);
-                    
+
                 }
             }
 
-            
+
 
             foreach (Link l1 in toRemove)
             {
@@ -566,11 +565,11 @@ namespace OOD2_project
             }
             // this.RemoveLink();
             this.listComponents.Remove(comp);
-            if(losesInput != null)
+            if (losesInput != null)
             {
                 losesInput.CalculateValue();
             }
-         }
+        }
 
         /// <summary>
         /// Remove link from the links list
@@ -693,7 +692,7 @@ namespace OOD2_project
             if (comp is Input)
             {
                 Input i = comp as Input;
-                 i.Clear();
+                i.Clear();
             }
             else if (comp is And)
             {
@@ -738,12 +737,12 @@ namespace OOD2_project
             {
                 Output s = comp as Output;
                 s.Clear();
-               
+
             }
-                     
-            }
+
         }
-
-
     }
+
+
+}
 
