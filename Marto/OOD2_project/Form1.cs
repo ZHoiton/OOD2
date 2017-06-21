@@ -24,10 +24,13 @@ namespace OOD2_project
         private Point point;
         private Component startComponent;
         private Component endComponent;
+        private int InputToBeRemovedValue= 2;
+        Graphics gr;
         Link link;
         private Point[] points;
         private bool linkActivate;
         private bool linkSelected = true;
+        private bool isComponentRemoved = false;
 
         public Form1()
         {
@@ -45,86 +48,92 @@ namespace OOD2_project
         //Drawing the component on the workPanel..
         private void workPanel_Paint(object sender, PaintEventArgs e)
         {
-            Graphics gr = e.Graphics;
+            gr = e.Graphics;
             if (isSelected)
             {
                 try
                 {
-                    switch (selectedComponent)
+                    if (!isComponentRemoved)
                     {
-
-                        case "input0":   // CUrrent flow added...
-                           
-                          
+                        switch (selectedComponent)
+                        {
+                            case "input0":   // CUrrent flow added...
                                 if (!this.project.checkOverlap(point))
                                 {
-
-                                    this.project.listComponents.Add(new Input(selectedImage, (this.workPanel.Width - (this.workPanel.Width - selectedImage.Width + 80)), point, 0));
-
+                                    this.project.listComponents.Add(new Input(selectedImage,
+                                       (this.workPanel.Width - (this.workPanel.Width - selectedImage.Width + 80)), point, 0));
                                 }
                                 else
                                     MessageBox.Show("Components cannot overlap!");
-                            
-                            break;
+                                break;
 
-                        case "input1":
+                            case "input1":
+                                if (!this.project.checkOverlap(point))
+                                {
+                                    this.project.listComponents.Add(new Input(selectedImage,
+                                        (this.workPanel.Width - (this.workPanel.Width - selectedImage.Width + 80)), point, 1));
+                                    isSelected = false;
+                                }
+                                else
+                                    MessageBox.Show("Components cannot overlap!");
 
-                            if (!this.project.checkOverlap(point))
-                            {
-                                this.project.listComponents.Add(new Input(selectedImage, (this.workPanel.Width - (this.workPanel.Width - selectedImage.Width + 80)), point, 1));
-                                isSelected = false;
-                            }
-                            else
-                                MessageBox.Show("Components cannot overlap!");
+                                break;
 
-                             
-                            break;
-                       
-                        case "OR":
-                            if (!this.project.checkOverlap(point))
-                            {
-                                this.project.listComponents.Add(new OR(selectedImage, (this.workPanel.Width - (this.workPanel.Width - selectedImage.Width + 80)), point));
-                            }
-                            else
-                                MessageBox.Show("Components cannot overlap!");
-                            break;
-                        case "XOR":
-                            if (!this.project.checkOverlap(point))
-                            {
-                                this.project.listComponents.Add(new XOR(selectedImage, (this.workPanel.Width - (this.workPanel.Width - selectedImage.Width + 80)), point));
-                            }
-                            else
-                                MessageBox.Show("Components cannot overlap!");
-                            break;
-                        case "NOT":
-                            if (!this.project.checkOverlap(point))
-                            {
-                                this.project.listComponents.Add(new NOT(selectedImage, (this.workPanel.Width - (this.workPanel.Width - selectedImage.Width + 80)), point));
-                            }
-                            else
-                                MessageBox.Show("Components cannot overlap!");
-                            break;
-                        case "AND":  
-                            if (!this.project.checkOverlap(point))
-                            {
-                                this.project.listComponents.Add(new And(selectedImage, (this.workPanel.Width - (this.workPanel.Width - selectedImage.Width + 80)), point));
-                            }
-                            else
-                                MessageBox.Show("Components cannot overlap!");
-                            break;
-                        case "output":
-                            if (!this.project.checkOverlap(point))
-                            {
-                                this.project.listComponents.Add(new Output(selectedImage, (this.workPanel.Width - (this.workPanel.Width - selectedImage.Width + 80)), point));
-                            }
-                            else
-                                MessageBox.Show("Components cannot overlap!");
-                            break;
-                        
+                            case "OR":
+                                if (!this.project.checkOverlap(point))
+                                {
+                                    this.project.listComponents.Add(new OR(selectedImage,
+                                        (this.workPanel.Width - (this.workPanel.Width - selectedImage.Width + 80)), point));
+                                }
+                                else
+                                    MessageBox.Show("Components cannot overlap!");
+                                break;
+
+                            case "XOR":
+                                if (!this.project.checkOverlap(point))
+                                {
+                                    this.project.listComponents.Add(new XOR(selectedImage
+                                        , (this.workPanel.Width - (this.workPanel.Width - selectedImage.Width + 80)), point));
+                                }
+                                else
+                                    MessageBox.Show("Components cannot overlap!");
+                                break;
+
+                            case "NOT":
+                                if (!this.project.checkOverlap(point))
+                                {
+                                    this.project.listComponents.Add(new NOT(selectedImage,
+                                        (this.workPanel.Width - (this.workPanel.Width - selectedImage.Width + 80)), point));
+                                }
+                                else
+                                    MessageBox.Show("Components cannot overlap!");
+                                break;
+
+                            case "AND":
+                                if (!this.project.checkOverlap(point))
+                                {
+                                    this.project.listComponents.Add(new And(selectedImage
+                                        , (this.workPanel.Width - (this.workPanel.Width - selectedImage.Width + 80)), point));
+                                }
+                                else
+                                    MessageBox.Show("Components cannot overlap!");
+                                break;
+
+                            case "output":
+                                if (!this.project.checkOverlap(point))
+                                {
+                                    this.project.listComponents.Add(new Output(selectedImage,
+                                        (this.workPanel.Width - (this.workPanel.Width - selectedImage.Width + 80)), point));
+                                }
+                                else
+                                    MessageBox.Show("Components cannot overlap!");
+                                break;
+                        }
                     }
                 }
-                catch
+                catch(Exception exeption)
                 {
+                    Console.WriteLine(exeption.Message);
                 }
 
             }
@@ -143,14 +152,14 @@ namespace OOD2_project
 
             foreach (Component com in this.project.listComponents)
             {
-
+                com.CalculateValue();
                 com.DrawComponent(gr);
             }
             foreach (Link c in this.project.listLinks)
             {
-
                 c.DrawLink(gr);
             }
+            isComponentRemoved = false;
         }
         private void pbInput0_MouseDown(object sender, MouseEventArgs e)
         {
@@ -377,8 +386,6 @@ namespace OOD2_project
             //The point where the user click
             Point p = new Point(e.X, e.Y);
 
-             
-
             if (linkActivate)
             {
                 if (startComponent == null || endComponent == null)
@@ -391,12 +398,30 @@ namespace OOD2_project
             {
                 if (this.project.listComponents.Count >= 1 && this.project.getComponent(p) != null)
                 {
-                    
-                        MenuItem[] menuItems = new MenuItem[3];
+                    MenuItem[] menuItems;
+                    if (this.project.getComponent(p) is Input)
+                    {
+                        menuItems = new MenuItem[4];
+                        menuItems[3] = new MenuItem("Change input value");
+                        menuItems[3].Click += new EventHandler((obj, evargs) => menuItem_click(obj, evargs, p, menuItems));
+                        Input input = (Input)this.project.getComponent(p);
+                        if (input.getValue() == 0)
+                        {
+                            InputToBeRemovedValue = 0;
+                        }
+                        if (input.getValue() == 1)
+                        {
+                            InputToBeRemovedValue = 1;
+                        }
+                    }
+                    else
+                    {
+                        menuItems = new MenuItem[3];
+                    }
+                        
                         menuItems[0] = new MenuItem("Remove Links");
                         menuItems[1] = new MenuItem("Remove Component");
                         menuItems[2] = new MenuItem("Clear Settings");
-
 
                         ContextMenu buttonMenu = new ContextMenu(menuItems);
                         buttonMenu.Show(workPanel, new System.Drawing.Point(p.X, p.Y));
@@ -416,28 +441,36 @@ namespace OOD2_project
             {
                 this.project.RemoveLink( this.project.getComponent(point));
                 this.project.ClearSettings(this.project.getComponent(point));
-
-               
             }
             //MenuItem Delete Component form the list with components
-            if (sender == menuItems[1])
+            else if (sender == menuItems[1])
             {
-
-
                 this.project.RemoveLink(this.project.getComponent(point));
-
-               this.project.RemoveComponent(this.project.getComponent(point));
-               
-               
-                              
+                this.project.RemoveComponent(this.project.getComponent(point));                
             }
             //clears settings for the selected item so it can be reused
-            if (sender == menuItems[2])
+            else if (sender == menuItems[2])
             {
                  this.project.ClearSettings(this.project.getComponent(point));
-             }
-
-           
+            }
+            else
+            {
+                Point pointt = project.getComponent(point).point;
+                this.project.RemoveComponent(project.getComponent(point));
+                isComponentRemoved = true;
+                workPanel.Invalidate();
+                if (InputToBeRemovedValue == 1)
+                {
+                    this.project.listComponents.Add(new Input(pbInput0.Image,
+                                        (this.workPanel.Width - (this.workPanel.Width - pbInput0.Image.Width + 80)), pointt, 0));
+                }
+                if (InputToBeRemovedValue == 0)
+                {
+                    this.project.listComponents.Add(new Input(pbInput1.Image,
+                                        (this.workPanel.Width - (this.workPanel.Width - pbInput0.Image.Width + 80)), pointt, 1));
+                }
+               
+            }
            // workPanel.Refresh();
             workPanel.Invalidate();
         }

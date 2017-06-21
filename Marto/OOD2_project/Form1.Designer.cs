@@ -81,9 +81,9 @@
             this.workPanel.TabIndex = 0;
             this.workPanel.DragDrop += new System.Windows.Forms.DragEventHandler(this.workPanel_DragDrop);
             this.workPanel.DragEnter += new System.Windows.Forms.DragEventHandler(this.workPanel_DragEnter);
-            this.workPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.workPanel_Paint);
             this.workPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.workPanel_MouseClick);
             this.workPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.workPanel_MouseDown);
+            this.workPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.workPanel_Paint);
             // 
             // label10
             // 

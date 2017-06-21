@@ -54,19 +54,14 @@ namespace OOD2_project
 
         public void Clear()
         {
-             
-             
                 hasOut = false;
                 Output = null;
              
-                
                 outValue = InValue;
                 
-            
                 hasIn = false;
                 InValue = 0;
                // outValue = upperInValue;
-              
         }
 
         public void DrawComponent(Graphics gr, Point p)

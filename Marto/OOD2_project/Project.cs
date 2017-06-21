@@ -111,11 +111,8 @@ namespace OOD2_project
         /// <param name="link"></param>
         public void AddLink(ref Link link)
         {
-
-
             if (link.startComponent is Input)
             {
-
                 for (int i = 0; i < listComponents.Count; i++)
                 {
                     if (listComponents.ElementAt(i) == link.startComponent)
@@ -127,15 +124,12 @@ namespace OOD2_project
                             listComponents[i] = input;
                             link.startComponent = input;
                          }
-
                         break;
                     }
                 }
             }
             else if (link.startComponent is OR)
             {
-
-
                 for (int i = 0; i < listComponents.Count; i++)
                 {
                     if (listComponents.ElementAt(i) == link.startComponent)
