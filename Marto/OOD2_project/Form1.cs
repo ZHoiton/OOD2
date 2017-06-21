@@ -440,14 +440,17 @@ namespace OOD2_project
             //MenuItem Delete Link from the list with links
             if (sender == menuItems[0])
             {
-                this.project.RemoveLink(this.project.getComponent(point));
                 this.project.ClearSettings(this.project.getComponent(point));
+                this.project.RemoveLink(this.project.getComponent(point));
             }
             //MenuItem Delete Component form the list with components
             else if (sender == menuItems[1])
             {
-                this.project.RemoveLink(this.project.getComponent(point));
                 this.project.RemoveComponent(this.project.getComponent(point));
+                if (this.project.listLinks.Count != 0)
+                {
+                    this.project.RemoveLink(this.project.getComponent(point));
+                }
             }
             //clears settings for the selected item so it can be reused
             else if (sender == menuItems[2])

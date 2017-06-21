@@ -11,9 +11,8 @@ namespace OOD2_project
     [Serializable]
     public class Input : Component
     {
-        private int currentValue;
+        private new int currentValue;
         private Link output;
-        Rectangle rect;
         public bool isUsed { get; set; }
 
         public Input(Image image, int size, Point coordinates, int value)

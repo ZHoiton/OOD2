@@ -457,6 +457,102 @@ namespace OOD2_project
         {
             List<Link> toRemove = new List<Link>();
             Component losesInput = null;
+
+            if (listLinks.Count != 0)
+            {
+                foreach (Link x in listLinks)
+                {
+                    if (x.startComponent == comp)
+                    {
+                        //int counter = 0;
+                        foreach (Component y in listComponents)
+                        {
+                            if (y == x.endComponent)
+                            {
+                                if (y is Input)
+                                {
+                                    Input i = y as Input;
+                                    i.Clear();
+                                    //listComponents[counter] = i;
+                                }
+                                else if (y is OR)
+                                {
+                                    OR i = y as OR;
+                                    i.Clear(x);
+                                    //listComponents[counter] = i;
+                                }
+                                else if (y is XOR)
+                                {
+                                    XOR i = y as XOR;
+                                    i.Clear(x);
+                                    //listComponents[counter] = i;
+                                }
+                                else if (y is NOT)
+                                {
+                                    NOT i = y as NOT;
+                                    i.Clear(x);
+                                    //listComponents[counter] = i;
+                                }
+                                else if (y is And)
+                                {
+                                    And i = y as And;
+                                    i.Clear(x);
+                                    //listComponents[counter] = i;
+                                }
+
+                            }
+                            //counter++;
+                        }
+                        toRemove.Add(x);
+
+
+                    }
+                    if (x.endComponent == comp)
+                    {
+                        //int counter = 0;
+                        foreach (Component y in listComponents)
+                        {
+                            if (y == x.startComponent)
+                            {
+                                if (y is Output)
+                                {
+                                    Output s = y as Output;
+                                    s.Clear();
+                                    //listComponents[counter] = s;
+                                }
+                                else if (y is OR)
+                                {
+                                    OR s = y as OR;
+                                    s.Clear(x);
+                                    //listComponents[counter] = s;
+                                }
+                                else if (y is XOR)
+                                {
+                                    XOR s = y as XOR;
+                                    s.Clear(x);
+                                    //listComponents[counter] = s;
+                                }
+                                else if (y is NOT)
+                                {
+                                    NOT i = y as NOT;
+                                    i.Clear(x);
+                                    //listComponents[counter] = i;
+                                }
+                                else if (y is And)
+                                {
+                                    And s = y as And;
+                                    s.Clear(x);
+                                    //listComponents[counter] = s;
+                                }
+
+                            }
+                        }
+                        toRemove.Add(x);
+
+                    }
+                }
+            }
+            
             foreach (Link checkIfOutput in toRemove)
             {
                 if (checkIfOutput.startComponent == comp)
@@ -464,100 +560,6 @@ namespace OOD2_project
                     losesInput = checkIfOutput.endComponent;
                 }
             }
-
-            foreach (Link x in listLinks)
-            {
-                if (x.startComponent == comp)
-                {
-                    int counter = 0;
-                    foreach (Component y in listComponents)
-                    {
-                        if (y == x.endComponent)
-                        {
-                            if (y is Input)
-                            {
-                                Input i = y as Input;
-                                i.Clear();
-                                listComponents[counter] = i;
-                            }
-                            else if (y is OR)
-                            {
-                                OR i = y as OR;
-                                i.Clear(x);
-                                listComponents[counter] = i;
-                            }
-                            else if (y is XOR)
-                            {
-                                XOR i = y as XOR;
-                                i.Clear(x);
-                                listComponents[counter] = i;
-                            }
-                            else if (y is NOT)
-                            {
-                                NOT i = y as NOT;
-                                i.Clear(x);
-                                listComponents[counter] = i;
-                            }
-                            else if (y is And)
-                            {
-                                And i = y as And;
-                                i.Clear(x);
-                                listComponents[counter] = i;
-                            }
-
-                        }
-                        counter++;
-                    }
-                    toRemove.Add(x);
-
-
-                }
-                if (x.endComponent == comp)
-                {
-                    int counter = 0;
-                    foreach (Component y in listComponents)
-                    {
-                        if (y == x.startComponent)
-                        {
-                            if (y is Output)
-                            {
-                                Output s = y as Output;
-                                s.Clear();
-                                listComponents[counter] = s;
-                            }
-                            else if (y is OR)
-                            {
-                                OR s = y as OR;
-                                s.Clear(x);
-                                listComponents[counter] = s;
-                            }
-                            else if (y is XOR)
-                            {
-                                XOR s = y as XOR;
-                                s.Clear(x);
-                                listComponents[counter] = s;
-                            }
-                            else if (y is NOT)
-                            {
-                                NOT i = y as NOT;
-                                i.Clear(x);
-                                listComponents[counter] = i;
-                            }
-                            else if (y is And)
-                            {
-                                And s = y as And;
-                                s.Clear(x);
-                                listComponents[counter] = s;
-                            }
-
-                        }
-                    }
-                    toRemove.Add(x);
-
-                }
-            }
-
-
 
             foreach (Link l1 in toRemove)
             {

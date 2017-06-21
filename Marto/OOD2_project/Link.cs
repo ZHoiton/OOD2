@@ -28,7 +28,10 @@ namespace OOD2_project
         public void setValue(int newValue)
         {
             this.value = newValue;
-            endComponent.CalculateValue();
+            if (endComponent != null)
+            {
+                endComponent.CalculateValue();
+            }
         }
         /// <summary>
         /// Returns a string with the value in this link..

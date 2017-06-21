@@ -14,7 +14,7 @@ namespace OOD2_project
         public Link input;
         private bool isEmpty;
         private int inValue = new int();
-        Rectangle rect;
+        new Rectangle rect;
 
         public Output(Image image, int size, Point coordinates) 
             : base(image, size, coordinates) 
