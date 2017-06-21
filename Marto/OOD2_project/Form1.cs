@@ -457,6 +457,7 @@ namespace OOD2_project
             else
             {
                 Point pointt = project.getComponent(point).point;
+                this.project.RemoveLink(this.project.getComponent(point));
                 this.project.RemoveComponent(project.getComponent(point));
                 isComponentRemoved = true;
                 workPanel.Invalidate();

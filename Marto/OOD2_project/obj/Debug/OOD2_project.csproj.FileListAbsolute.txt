@@ -40,3 +40,12 @@ C:\Users\k_vol\Desktop\OOD2\Marto\OOD2_project\obj\Debug\OOD2_project.csprojReso
 C:\Users\k_vol\Desktop\OOD2\Marto\OOD2_project\obj\Debug\OOD2_project.Form1.resources
 C:\Users\k_vol\Desktop\OOD2\Marto\OOD2_project\obj\Debug\OOD2_project.Properties.Resources.resources
 C:\Users\k_vol\Desktop\OOD2\Marto\OOD2_project\obj\Debug\OOD2_project.csproj.GenerateResource.Cache
+C:\Users\Ivan\Documents\GitHub\OOD2\Marto\OOD2_project\bin\Debug\OOD2_project.exe.config
+C:\Users\Ivan\Documents\GitHub\OOD2\Marto\OOD2_project\obj\Debug\OOD2_project.exe
+C:\Users\Ivan\Documents\GitHub\OOD2\Marto\OOD2_project\obj\Debug\OOD2_project.pdb
+C:\Users\Ivan\Documents\GitHub\OOD2\Marto\OOD2_project\bin\Debug\OOD2_project.exe
+C:\Users\Ivan\Documents\GitHub\OOD2\Marto\OOD2_project\bin\Debug\OOD2_project.pdb
+C:\Users\Ivan\Documents\GitHub\OOD2\Marto\OOD2_project\obj\Debug\OOD2_project.csprojResolveAssemblyReference.cache
+C:\Users\Ivan\Documents\GitHub\OOD2\Marto\OOD2_project\obj\Debug\OOD2_project.Form1.resources
+C:\Users\Ivan\Documents\GitHub\OOD2\Marto\OOD2_project\obj\Debug\OOD2_project.Properties.Resources.resources
+C:\Users\Ivan\Documents\GitHub\OOD2\Marto\OOD2_project\obj\Debug\OOD2_project.csproj.GenerateResource.Cache
