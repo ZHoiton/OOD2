@@ -92,10 +92,8 @@ namespace OOD2_project
         {
             //calculate the value of lower and upper outputs
             this.outValue = this.upperInValue | this.lowInValue;
-            Console.WriteLine("COMPONENT TO LINK OUTER");
             if (Output != null)
             {
-                Console.WriteLine("COMPONENT TO LINK INNER");
                 Output.setValue(this.outValue);
             }
         }
