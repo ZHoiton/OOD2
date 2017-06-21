@@ -26,7 +26,8 @@ namespace OOD2_project
         private Component endComponent;
         private int InputToBeRemovedValue= 2;
         Graphics gr;
-        Link link;
+        Link linkref;
+        List<Link> listOfLinks;
         private Point[] points;
         private bool linkActivate;
         private bool linkSelected = true;
@@ -36,6 +37,7 @@ namespace OOD2_project
         {
             InitializeComponent();
             pointsList = new List<Point>();
+            listOfLinks = new List<Link>();
             this.project = new Project(workPanel.Height, workPanel.Width);
             
         }
@@ -139,8 +141,8 @@ namespace OOD2_project
             }
             if (linkActivate && endComponent != null)
             {
-                if(link != null)
-                    link.DrawLink(gr);
+                if(linkref != null)
+                    linkref.DrawLink(gr);
               
                 pointsList = new List<Point>();
                 startComponent = null;
@@ -152,7 +154,6 @@ namespace OOD2_project
 
             foreach (Component com in this.project.listComponents)
             {
-                com.CalculateValue();
                 com.DrawComponent(gr);
             }
             foreach (Link c in this.project.listLinks)
@@ -500,7 +501,9 @@ namespace OOD2_project
                     
                         pointsList.Add(p);
                         points = pointsList.ToArray();
-                        link = new Link(startComponent, endComponent, points);
+                        Link link = new Link(startComponent, endComponent, points);
+                        linkref = link;
+                        listOfLinks.Add(link);
                         //adjSpliter.setInput(con,Convert.ToInt32(con.setFlow()));
                         this.project.AddLink(ref link);
                         this.workPanel.Invalidate();

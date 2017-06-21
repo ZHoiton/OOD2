@@ -77,11 +77,6 @@ namespace OOD2_project
               
         }
 
-        public void DrawComponent(Graphics gr, Point p)
-        {
-            // draw the certain component on the work panel
-        }
-
         public override Point getPosition()
         {
             return base.getPosition();

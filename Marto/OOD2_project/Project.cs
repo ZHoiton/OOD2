@@ -22,7 +22,6 @@ namespace OOD2_project
         public List<Link> listLinks;
          public Component component;
         public Link link;
-        private string savedFile;
 
         public Project(int height, int width)
         {
@@ -118,6 +117,7 @@ namespace OOD2_project
                     if (listComponents.ElementAt(i) == link.startComponent)
                     {
                         Input input = listComponents.ElementAt(i) as Input;
+                        input.CalculateValue();
                         input.setOutput(ref link);
                         if (link != null)
                         {
@@ -135,6 +135,7 @@ namespace OOD2_project
                     if (listComponents.ElementAt(i) == link.startComponent)
                     {
                         OR or = listComponents.ElementAt(i) as OR;
+                        or.CalculateValue();
                         or.setOutput(ref link);
                         if (link != null)
                         {
@@ -154,6 +155,7 @@ namespace OOD2_project
                     if (listComponents.ElementAt(i) == link.startComponent)
                     {
                         XOR xor = listComponents.ElementAt(i) as XOR;
+                        xor.CalculateValue();
                         xor.setOutput(ref link);
                         if (link != null)
                         {
@@ -173,6 +175,7 @@ namespace OOD2_project
                     if (listComponents.ElementAt(i) == link.startComponent)
                     {
                         NOT not = listComponents.ElementAt(i) as NOT;
+                        not.CalculateValue();
                         not.setOutput(ref link);
                         if (link != null)
                         {
@@ -192,6 +195,7 @@ namespace OOD2_project
                     if (listComponents.ElementAt(i) == link.startComponent)
                     {
                         And and = listComponents.ElementAt(i) as And;
+                        and.CalculateValue();
                         and.setOutput(ref link);
                         if (link != null)
                         {
@@ -212,6 +216,7 @@ namespace OOD2_project
                         if (listComponents.ElementAt(i) == link.endComponent)
                         {
                             And and = listComponents.ElementAt(i) as And;
+                            and.CalculateValue();
                             Rectangle r1 = new Rectangle(link.curvePoints[link.curvePoints.Count() - 1], new Size(2, 2));
                             if (r1.IntersectsWith(and.lowerLeft))
                             {
@@ -230,7 +235,8 @@ namespace OOD2_project
                                             }
                                         }
                                     }
-                                    this.listLinks.Add(link);
+                                    Link newLink = link;
+                                    this.listLinks.Add(newLink);
                                 }
                                 break;
                             }
@@ -252,7 +258,8 @@ namespace OOD2_project
                                             }
                                         }
                                     }
-                                    this.listLinks.Add(link);
+                                    Link newLink = link;
+                                    this.listLinks.Add(newLink);
                                 }
                                 break;
                             }
@@ -268,13 +275,15 @@ namespace OOD2_project
                         if (listComponents.ElementAt(i) == link.endComponent)
                         {
                             Output o = listComponents.ElementAt(i) as Output;
+                            o.CalculateValue();
                             o.setInput(ref link);
                             if (link != null)
                             {
                                 listComponents[i] = o;
                                 link.endComponent = o;
-                                this.listLinks.Add(link);
                             }
+                            Link newLink = link;
+                            this.listLinks.Add(newLink);
 
                             break;
                         }
@@ -288,6 +297,7 @@ namespace OOD2_project
                         if (listComponents.ElementAt(i) == link.endComponent)
                         {
                             OR or = listComponents.ElementAt(i) as OR;
+                            or.CalculateValue();
                             Rectangle r1 = new Rectangle(link.curvePoints[link.curvePoints.Count() - 1], new Size(2, 2));
                             if (r1.IntersectsWith(or.lowerLeft))
                             {
@@ -306,7 +316,8 @@ namespace OOD2_project
                                             }
                                         }
                                     }
-                                    this.listLinks.Add(link);
+                                    Link newLink = link;
+                                    this.listLinks.Add(newLink);
                                 }
                                 break;
                             }
@@ -328,7 +339,8 @@ namespace OOD2_project
                                             }
                                         }
                                     }
-                                    this.listLinks.Add(link);
+                                    Link newLink = link;
+                                    this.listLinks.Add(newLink);
                                 }
                                 break;
                             }
@@ -344,6 +356,7 @@ namespace OOD2_project
                         if (listComponents.ElementAt(i) == link.endComponent)
                         {
                             NOT not = listComponents.ElementAt(i) as NOT;
+                            not.CalculateValue();
                             Rectangle r1 = new Rectangle(link.curvePoints[link.curvePoints.Count() - 1], new Size(2, 2));
                              
                            if (r1.IntersectsWith(not.inLeft))
@@ -363,7 +376,8 @@ namespace OOD2_project
                                             }
                                         }
                                     }
-                                    this.listLinks.Add(link);
+                                    Link newLink = link;
+                                    this.listLinks.Add(newLink);
                                 }
                                 break;
                             }
@@ -380,6 +394,7 @@ namespace OOD2_project
                         if (listComponents.ElementAt(i) == link.endComponent)
                         {
                             XOR xor = listComponents.ElementAt(i) as XOR;
+                            xor.CalculateValue();
                             Rectangle r1 = new Rectangle(link.curvePoints[link.curvePoints.Count() - 1], new Size(2, 2));
                             if (r1.IntersectsWith(xor.lowerLeft))
                             {
@@ -398,7 +413,8 @@ namespace OOD2_project
                                             }
                                         }
                                     }
-                                    this.listLinks.Add(link);
+                                    Link newLink = link;
+                                    this.listLinks.Add(newLink);
                                 }
                                 break;
                             }
@@ -420,7 +436,8 @@ namespace OOD2_project
                                             }
                                         }
                                     }
-                                    this.listLinks.Add(link);
+                                    Link newLink = link;
+                                    this.listLinks.Add(newLink);
                                 }
                                 break;
                             }
