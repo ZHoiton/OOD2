@@ -45,15 +45,15 @@ namespace OOD2_project
         {
                 if (value == 1)
                 {
-                    gr.DrawLines(new Pen(Brushes.Red, 5), curvePoints);
+                    gr.DrawLines(new Pen(Brushes.Blue, 5), curvePoints);
                     gr.DrawString("Value: " + getValue(), new Font(FontFamily.GenericSerif, 10, FontStyle.Regular)
-                        , Brushes.Red, ((startComponent.getPosition().X + endComponent.getPosition().X) / 2)
+                        , Brushes.Blue, ((startComponent.getPosition().X + endComponent.getPosition().X) / 2)
                         , ((startComponent.getPosition().Y + endComponent.getPosition().Y) / 2));
                 }
                 else
-                  gr.DrawLines(new Pen(Brushes.Green, 5), curvePoints);
+                  gr.DrawLines(new Pen(Brushes.Red, 5), curvePoints);
                   gr.DrawString("Value: " + getValue(), new Font(FontFamily.GenericSerif, 10, FontStyle.Regular)
-                      , Brushes.Blue, ((startComponent.getPosition().X + endComponent.getPosition().X) / 2)
+                      , Brushes.Red, ((startComponent.getPosition().X + endComponent.getPosition().X) / 2)
                       , ((startComponent.getPosition().Y + endComponent.getPosition().Y) / 2));
         }
     }
